@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import SimpleContainer from "./components/main-page";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 interface Todo {
   _id: string;
@@ -45,10 +46,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        text: newTodo,
-        //  completed: newCompleted  !!TODOOOOOOOOOOOOOOTODOOOO
-      }),
+      body: JSON.stringify({ completed: !completed }),
     });
     const { data } = await response.json();
     const updatedTodos = todos.map((todo) =>
@@ -59,14 +57,13 @@ function App() {
 
   const deleteTodo = async (id: string) => {
     await fetch(`${todoUrl}${id}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
     const updatedTodos = todos.filter((todo) => todo._id !== id);
-      setTodos(updatedTodos);
+    setTodos(updatedTodos);
   };
 
   return (
-    <SimpleContainer>
     <div className="App">
       <h1>Todo App</h1>
       <div>
@@ -88,12 +85,17 @@ function App() {
             >
               {todo.text}
             </span>
-            <button onClick={() => deleteTodo(todo._id)}>Delete</button>
+            <Button
+              onClick={() => deleteTodo(todo._id)}
+              variant="contained"
+              endIcon={<DeleteIcon />}
+            >
+              Delete
+            </Button>
           </li>
         ))}
       </ul>
     </div>
-    </SimpleContainer>
   );
 }
 
