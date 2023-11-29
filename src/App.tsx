@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import SimpleContainer from "./components/main-page";
 
 interface Todo {
   _id: string;
@@ -65,6 +66,7 @@ function App() {
   };
 
   return (
+    <SimpleContainer>
     <div className="App">
       <h1>Todo App</h1>
       <div>
@@ -91,6 +93,7 @@ function App() {
         ))}
       </ul>
     </div>
+    </SimpleContainer>
   );
 }
 
