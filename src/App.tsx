@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>MERN Todo App</h1>
+      <h1>Todo App</h1>
       <div>
         <input
           type="text"
