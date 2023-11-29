@@ -11,8 +11,8 @@ interface Todo {
   completed: boolean;
 }
 
-const baseUrl = "http://localhost:5000/api/v1/";
-const todoUrl = `${baseUrl}todos/`;
+const BASE_URL = "http://localhost:5000/api/v1/";
+const todoUrl = `${BASE_URL}todos/`;
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
